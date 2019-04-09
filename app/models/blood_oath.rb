@@ -22,4 +22,16 @@ class Blood_Oath
     @@all
   end
 
+  def self.first_oath
+  oath_date = @@all.map { |oath|
+      follow = oath.follower
+      date = oath.initiation_date
+      {follow => date}
+    }
+
+    earliest_follower = oath_date.min_by { |k, v| v}
+
+    earliest_follower.keys.first
+  end
+
 end
